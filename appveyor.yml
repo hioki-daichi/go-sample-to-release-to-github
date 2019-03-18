@@ -3,7 +3,7 @@ environment:
   GOBIN: c:\gobin
 
 cache:
-  - c:\cache
+  - c:\cache -> appveyor.yml
 
 install:
   - rmdir c:\go /s /q
