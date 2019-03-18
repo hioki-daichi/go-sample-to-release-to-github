@@ -1,0 +1,15 @@
+builds:
+  - binary: sample
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - 386
+archive:
+  format: zip
+release:
+  github:
+    owner: hioki-daichi
+    name: go-sample-to-release-to-github
