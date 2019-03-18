@@ -14,10 +14,10 @@ install:
 build: false
 
 test_script:
-  - go install github.com/rakyll/statik
-  - go install github.com/goreleaser/goreleaser
+  - IF NOT EXIST "c:\cache\gobin\statik.exe" go install github.com/rakyll/statik
   - c:\gobin\statik.exe -src=.\public
   - go test ./...
 
 deploy_script:
+  - IF NOT EXIST "c:\cache\gobin\goreleaser.exe" go install github.com/goreleaser/goreleaser
   - if %APPVEYOR_REPO_TAG% equ true c:\gobin\goreleaser release --rm-dist
