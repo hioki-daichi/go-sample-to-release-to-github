@@ -20,4 +20,4 @@ test_script:
 
 deploy_script:
   - IF NOT EXIST "c:\cache\gobin\goreleaser.exe" go install github.com/goreleaser/goreleaser
-  - if %APPVEYOR_REPO_TAG% equ true c:\gobin\goreleaser release --rm-dist
+  - if %APPVEYOR_REPO_TAG% equ true c:\gobin\goreleaser.exe release --rm-dist
