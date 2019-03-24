@@ -7,8 +7,7 @@ cache:
   - c:\cache
 
 install:
-  # - rmdir c:\go /s /q
-  - set
+  - mkdir "%GOROOT%"
   - IF NOT EXIST "c:\cache" mkdir c:\cache
   - IF NOT EXIST "c:\cache\go%GOVERSION%.windows-amd64.msi" curl -o "c:\cache\go%GOVERSION%.windows-amd64.msi" https://storage.googleapis.com/golang/go%GOVERSION%.windows-amd64.msi
   - msiexec /i "c:\cache\go%GOVERSION%.windows-amd64.msi" /q
