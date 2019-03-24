@@ -12,20 +12,14 @@ install:
   - IF NOT EXIST "c:\cache" mkdir c:\cache
   - IF NOT EXIST "c:\cache\go%GOVERSION%.windows-amd64.msi" curl -o "c:\cache\go%GOVERSION%.windows-amd64.msi" https://storage.googleapis.com/golang/go%GOVERSION%.windows-amd64.msi
   - msiexec /i "c:\cache\go%GOVERSION%.windows-amd64.msi" /q
-  - ls %GOROOT%
 
 build: false
 
 test_script:
-  - echo "test_script"
+  - IF NOT EXIST "c:\cache\gobin\statik.exe" go install github.com/rakyll/statik
+  - c:\gobin\statik.exe -src=.\public
+  - go test ./...
 
-deploy: false
-
-# test_script:
-#   - IF NOT EXIST "c:\cache\gobin\statik.exe" go install github.com/rakyll/statik
-#   - c:\gobin\statik.exe -src=.\public
-#   - go test ./...
-#
-# deploy_script:
-#   - IF NOT EXIST "c:\cache\gobin\goreleaser.exe" go install github.com/goreleaser/goreleaser
-#   - if %APPVEYOR_REPO_TAG% equ true c:\gobin\goreleaser.exe release --rm-dist
+deploy_script:
+  - IF NOT EXIST "c:\cache\gobin\goreleaser.exe" go install github.com/goreleaser/goreleaser
+  - if %APPVEYOR_REPO_TAG% equ true c:\gobin\goreleaser.exe release --rm-dist
