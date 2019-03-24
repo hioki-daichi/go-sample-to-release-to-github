@@ -1,6 +1,7 @@
 environment:
   GOVERSION: 1.12
   GOBIN: c:\gobin
+  GOROOT: c:\foo
 
 cache:
   - c:\cache
