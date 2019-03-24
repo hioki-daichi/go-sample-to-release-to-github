@@ -3,8 +3,8 @@ environment:
 
 install:
   - rmdir c:\go /s /q
-  - curl -o "c:\cache\go1.12.windows-amd64.msi" https://storage.googleapis.com/golang/go1.12.windows-amd64.msi
-  - msiexec /i "c:\cache\go1.12.windows-amd64.msi" /q
+  - curl -O https://storage.googleapis.com/golang/go1.12.windows-amd64.msi
+  - msiexec /i "go1.12.windows-amd64.msi" /q
 
 build: false
 
